@@ -1,6 +1,10 @@
 "use client";
 import { useState } from 'react';
-import React from 'react'
+import React from 'react';
+import { getFirestore, collection, addDoc, doc, getDoc, getDocs, query, where, updateDoc, deleteDoc } from "firebase/firestore";
+import { app } from "../firebase";
+
+const firestore = getFirestore(app);
 
 export const form = () => {
   const [name, setName] = useState('');
@@ -9,7 +13,18 @@ export const form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(`Name: ${name}, Email: ${email}`);
+
+    writeData();
+    
   };
+
+}
+
+  const writeData = async() => {
+    const result = await addDoc(collection(firestore, "submissions"), {
+      name: name,
+      email: email
+    });
 
   return (
     <div>
