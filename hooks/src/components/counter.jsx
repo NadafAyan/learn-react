@@ -1,14 +1,14 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import './counter.css';
 
-const counter = () => {
+const Counter = () => {
     const [count, setCount] = useState(0);
   return (
     <div className="counter-container">
-        <p className='para'>You have clicked 0 times.</p>
+        <p className='para'>You have clicked {count} times.</p>
         <button className='btn'>Click me</button>
     </div>
   )
 }
 
-export default counter
+export default Counter;
